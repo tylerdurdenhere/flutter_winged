@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DriverLogin(),
+      home: MainPage(),
       routes: {
         '/myVehicles': (context) => MyVehicles(),
         '/myaddresses': (context) => MyAddresses(),
