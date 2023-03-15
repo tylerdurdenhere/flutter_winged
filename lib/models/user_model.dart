@@ -8,9 +8,7 @@ class UserModel {
   final String state;
   final String postalCode;
   final String emergencyPhoneNo;
-  final String driverId;
-  final String driverMode;
-  final String driverLicense;
+
   final String userImage;
   final String driverImage;
   final String created;
@@ -27,9 +25,6 @@ class UserModel {
     required this.state,
     required this.postalCode,
     required this.emergencyPhoneNo,
-    required this.driverId,
-    required this.driverMode,
-    required this.driverLicense,
     required this.userImage,
     required this.driverImage,
     required this.created,
@@ -47,9 +42,6 @@ class UserModel {
       "State": state,
       "PostalCode": postalCode,
       "EmergencyPhoneNo": emergencyPhoneNo,
-      "IsDriver": driverId,
-      "DriverMode": driverMode,
-      "DriverLicense": driverLicense,
       "UserImage": userImage,
       "DriverImage": driverImage,
       "Created": created,
