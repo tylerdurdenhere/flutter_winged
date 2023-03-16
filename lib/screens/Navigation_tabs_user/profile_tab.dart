@@ -1,7 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, camel_case_types, sized_box_for_whitespace, sort_child_properties_last
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/screens/authentication/Driver_screens/driver_login.dart';
+import 'package:flutter_winged/Unused_screens/Driver_screens/driver_login.dart';
+import 'package:flutter_winged/Unused_screens/Driver_screens/driver_register.dart';
+import 'package:flutter_winged/screens/Main_screens/main_page.dart';
+import 'package:flutter_winged/screens/authentication/Driver_screens/driver_register.dart';
 
 class UserProfileTabPage extends StatefulWidget {
   const UserProfileTabPage({Key? key}) : super(key: key);
@@ -505,7 +509,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
           ),
           Expanded(
             child: ListView.builder(
-                itemCount: 6,
+                itemCount: 5,
                 itemBuilder: (context, index) {
                   return listViewItem(index);
                 }),
@@ -524,10 +528,11 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const DriverLogin()));
+                                builder: (context) =>
+                                    const RegisterPageDriver()));
                       },
                       child: Text(
-                        'Driver Mode',
+                        'Switch Driver Mode',
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -552,7 +557,6 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
     return TextButton(
         onPressed: () {
           List<String> routes = [
-            '/myVehicles',
             '/myaddresses',
             '/mywallet',
             '/paymentmethods',
@@ -597,7 +601,6 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
   Widget containerTitle(int index) {
     double textSize = 17.3;
     List<String> containerTitles = [
-      'My vehicle',
       'My addresses',
       'My wallet',
       'Payment methods',
@@ -892,6 +895,42 @@ class AppSettings extends StatelessWidget {
                   style: TextStyle(fontSize: 12),
                 ),
                 SizedBox(width: 16),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 50),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 40,
+                    margin:
+                        EdgeInsets.only(top: 0, right: 10, left: 10, bottom: 0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut();
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MainPage()));
+                      },
+                      child: Text(
+                        'Sign Out',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFFF7D302),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

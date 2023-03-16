@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_winged/screens/Find_ride/find_ride2.dart';
 import 'package:flutter_winged/screens/Main_screens/home_page.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/home_tab.dart';
-import 'package:flutter_winged/screens/Offer_ride/offer_ride2.dart';
+import 'package:flutter_winged/Unused_screens/Offer_ride/offer_ride2.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_place/google_place.dart';
 

@@ -2,8 +2,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/screens/authentication/Driver_screens/driver_register.dart';
-import 'package:flutter_winged/screens/authentication/Driver_screens/driver_verify_page.dart';
+import 'package:flutter_winged/Unused_screens/Driver_screens/driver_register.dart';
+import 'package:flutter_winged/Unused_screens/Driver_screens/driver_verify_page.dart';
 import 'package:flutter_winged/screens/authentication/User_screens/register_page.dart';
 import 'package:flutter_winged/screens/authentication/User_screens/verify_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +20,7 @@ class DriverLogin extends StatefulWidget {
 class _DriverLoginState extends State<DriverLogin> {
   TextEditingController countrycode = TextEditingController();
   var phone = "";
-  final User? user = FirebaseAuth.instance.currentUser;
+  final User? driver = FirebaseAuth.instance.currentUser;
 
   @override
   void initState() {
@@ -146,28 +146,14 @@ class _DriverLoginState extends State<DriverLogin> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () async {
-                            await FirebaseAuth.instance.verifyPhoneNumber(
-                              phoneNumber: '${countrycode.text + phone}',
-                              verificationCompleted:
-                                  (PhoneAuthCredential credential) {
-                                showSnackBar(context, "Verification Completed");
-                              },
-                              verificationFailed: (FirebaseAuthException e) {
-                                showSnackBar(context, e.toString());
-                              },
-                              codeSent:
-                                  (String verificationId, int? resendToken) {
-                                DriverLogin.verify = verificationId;
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            DriverVerifyPage(phone)));
-                                showSnackBar(context, "Verification Code Sent");
-                              },
-                              codeAutoRetrievalTimeout:
-                                  (String verificationId) {},
-                            );
+                            final User? driver =
+                                FirebaseAuth.instance.currentUser;
+                            if (driver == null) {
+                              showSnackBar(context, "User not found");
+                              return;
+                            } else {
+                              signIn();
+                            }
                           },
                           child: Text(
                             'Login',

@@ -17,7 +17,7 @@ class MainPage extends StatelessWidget {
           if (snapshot.hasData) {
             return HomePage();
           } else {
-            return OnboardingPage();
+            return const OnboardingPage();
           }
         },
       ),
