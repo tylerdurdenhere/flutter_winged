@@ -1,10 +1,14 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, camel_case_types, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:flutter_winged/controller/signup_controller.dart';
+import 'package:flutter_winged/models/card_model.dart';
+import 'package:get/get.dart';
 
 class PaymentMethods extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -200,6 +204,16 @@ class PaymentMethods extends StatelessWidget {
                             child: TextButton(
                               onPressed: () {
                                 // code to save changes
+                                final card = CardModel(
+                                  userId: '',
+                                  cardNo: '',
+                                  cardExpiry: '',
+                                  cardType: '',
+                                  created: '',
+                                  updated: '',
+                                  deleted: '',
+                                );
+                                SignUpController.instance.addCard(card);
                                 Navigator.pop(context);
                               },
                               child: Text(

@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_winged/Unused_screens/new_screens/driver_register_new.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/about.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/my_addresses.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/my_vehicles.dart';
@@ -12,7 +13,7 @@ import 'package:flutter_winged/screens/Navigation_tabs_user/support.dart';
 import 'package:flutter_winged/Unused_screens/Driver_screens/driver_login.dart';
 import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
 import 'package:flutter_winged/screens/Find_ride/find_ride2.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride3.dart';
+import 'package:flutter_winged/Unused_screens/find_ride_screens/find_ride3.dart';
 import 'package:flutter_winged/screens/Main_screens/home_page_driver.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_driver/home_tab_driver.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/home_tab.dart';

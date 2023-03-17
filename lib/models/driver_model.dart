@@ -1,5 +1,5 @@
-class UserModel {
-  final String? userId;
+class DriverModel {
+  final String? driverId;
   final String fullname;
   final String phoneNo;
   final String username;
@@ -8,13 +8,14 @@ class UserModel {
   final String state;
   final String postalCode;
   final String emergencyPhoneNo;
-  final String userImage;
+  final String driverLicense;
+  final String driverImage;
   final String created;
   final String updated;
   final String deleted;
 
-  const UserModel({
-    this.userId,
+  const DriverModel({
+    this.driverId,
     required this.fullname,
     required this.phoneNo,
     required this.username,
@@ -23,7 +24,8 @@ class UserModel {
     required this.state,
     required this.postalCode,
     required this.emergencyPhoneNo,
-    required this.userImage,
+    required this.driverLicense,
+    required this.driverImage,
     required this.created,
     required this.updated,
     required this.deleted,
@@ -39,7 +41,8 @@ class UserModel {
       "State": state,
       "PostalCode": postalCode,
       "EmergencyPhoneNo": emergencyPhoneNo,
-      "UserImage": userImage,
+      "DriverLicense": driverLicense,
+      "DriverImage": driverImage,
       "Created": created,
       "Updated": updated,
       "Deleted": deleted,

@@ -1,11 +1,15 @@
 // ignore_for_file: library_private_types_in_public_api, use_key_in_widget_constructors, must_be_immutable, camel_case_types, prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:flutter_winged/controller/signup_controller.dart';
+import 'package:flutter_winged/models/wallet_model.dart';
+import 'package:get/get.dart';
 
 class MyWallet extends StatelessWidget {
   bool _isTopUpSelected = true;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -24,7 +28,7 @@ class MyWallet extends StatelessWidget {
         title: Row(
           children: [
             Text(
-              "Payment methods",
+              "My wallet",
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -759,6 +763,15 @@ class MyWallet extends StatelessWidget {
                                 child: TextButton(
                                   onPressed: () {
                                     // code to save changes
+                                    final wallet = WalletModel(
+                                      walletOwnerId: '',
+                                      walletBalance: '',
+                                      walletStatus: '',
+                                      created: '',
+                                      updated: '',
+                                      deleted: '',
+                                    );
+                                    SignUpController.instance.addWallet(wallet);
                                     Navigator.pop(context);
                                   },
                                   child: Text(

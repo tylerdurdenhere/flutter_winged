@@ -4,8 +4,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:flutter_winged/controller/signup_controller.dart';
+import 'package:flutter_winged/models/ride_request_model.dart';
 import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride3.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_place/google_place.dart';
@@ -129,6 +131,7 @@ class _FindRidePage2State extends State<FindRidePage2> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SignUpController());
     Set<Marker> _markers = {
       Marker(
         markerId: MarkerId('start'),
@@ -297,14 +300,22 @@ class _FindRidePage2State extends State<FindRidePage2> {
                       Expanded(
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => FindRidePage3(
-                                  destination: '',
-                                  pickup: '',
-                                ),
-                              ),
+                            final findride = RideRequestModel(
+                              userId: '',
+                              pickupLocationText: '',
+                              pickupLocationLang: '',
+                              pickupLocationLat: '',
+                              dropLocationText: '',
+                              dropLocationLang: '',
+                              dropLocationLat: '',
+                              rideId: '',
+                              completed: '',
+                              canceled: '',
+                              created: '',
+                              updated: '',
+                              deleted: '',
                             );
+                            SignUpController.instance.findRide(findride);
                           },
                           child: Text(
                             'Search',

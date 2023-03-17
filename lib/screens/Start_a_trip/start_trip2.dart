@@ -10,7 +10,7 @@ import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
 import 'package:flutter_winged/screens/Start_a_trip/start_trip1.dart';
 import 'package:flutter_winged/screens/Start_a_trip/start_trip3.dart';
 import 'package:flutter_winged/models/checkbox_state.dart';
-import 'package:flutter_winged/models/vehicle_model.dart';
+import 'package:flutter_winged/Unused_screens/vehicle_model.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_place/google_place.dart';
@@ -89,12 +89,12 @@ class _StartTripPage2State extends State<StartTripPage2> {
     CheckBoxState(title: 'Smoking in the car'),
   ];
 
-  List<Vehicle> item = [
-    Vehicle('assets/car4.png', 'Benz CLK300'),
-    Vehicle('assets/car2.png', 'BMW i3'),
-    Vehicle('assets/car3.png', 'Tesla X'),
-    Vehicle('assets/car4.png', 'MAZDA Rx7'),
-    Vehicle('assets/car5.png', 'Lancer EVO'),
+  List<VehicleModel> item = [
+    VehicleModel('assets/car4.png', 'Benz CLK300'),
+    VehicleModel('assets/car2.png', 'BMW i3'),
+    VehicleModel('assets/car3.png', 'Tesla X'),
+    VehicleModel('assets/car4.png', 'MAZDA Rx7'),
+    VehicleModel('assets/car5.png', 'Lancer EVO'),
   ];
 
   int _count = 0;
@@ -404,7 +404,7 @@ class _StartTripPage2State extends State<StartTripPage2> {
   }
 
   Widget buildCard({
-    required Vehicle item,
+    required VehicleModel item,
   }) =>
       Container(
         width: 150,
