@@ -9,6 +9,7 @@ import 'package:flutter_winged/controller/signup_controller.dart';
 import 'package:flutter_winged/models/driver_model.dart';
 import 'package:flutter_winged/models/vehicle_model.dart';
 import 'package:flutter_winged/Unused_screens/vehicle_model.dart';
+import 'package:flutter_winged/screens/Main_screens/home_page_driver.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -774,7 +775,10 @@ class _AllsetState extends State<Allset> {
       key: scaffoldKey,
       backgroundColor: Colors.white,
       body: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => HomePageDriver()));
+        },
         child: Center(
           child: Text(
             'All set to go!',
