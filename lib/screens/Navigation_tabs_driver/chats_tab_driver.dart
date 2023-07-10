@@ -1,9 +1,9 @@
-// ignore_for_file: library_private_types_in_public_api, avoid_returning_null_for_void, prefer_const_constructors
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DriverChatTabPage extends StatefulWidget {
-  const DriverChatTabPage({super.key});
+  const DriverChatTabPage();
 
   @override
   _DriverChatTabPageState createState() => _DriverChatTabPageState();
@@ -14,26 +14,32 @@ class _DriverChatTabPageState extends State<DriverChatTabPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: RefreshIndicator(
           onRefresh: () async {
             // perform the refresh logic here
             return null;
           },
           child: Padding(
-            padding: EdgeInsets.only(top: 24, left: 10),
+            padding: EdgeInsets.only(
+              top: 24,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 0),
-                Text(
-                  "Chats",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black,
-                  ),
+                Row(
+                  children: [
+                    SizedBox(width: 25),
+                    Text(
+                      "Chats",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: 10),
                 Expanded(
                     child: ListView.builder(
                   itemBuilder: (context, index) {
@@ -61,25 +67,32 @@ class _DriverChatTabPageState extends State<DriverChatTabPage> {
         );
       },
       child: Container(
-        height: 100,
-        width: 380,
-        margin: EdgeInsets.only(top: 6, bottom: 4, right: 20, left: 6),
+        height: 80,
+        width: double.infinity,
+        margin: EdgeInsets.only(bottom: 2),
         decoration: BoxDecoration(
           color: isRead ? Colors.transparent : Colors.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.2),
-              offset: Offset(0, 2),
-              blurRadius: 3,
-              spreadRadius: 0,
-            ),
-          ],
-          borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            prefixIcon(),
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
+              child: Container(
+                height: 45,
+                width: 45,
+                padding: EdgeInsets.all(0),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color.fromARGB(80, 204, 204, 204),
+                ),
+                child: Icon(
+                  Icons.person_2,
+                  size: 30,
+                  color: Color.fromARGB(99, 247, 211, 2),
+                ),
+              ),
+            ),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(right: 18),
@@ -119,32 +132,38 @@ class _DriverChatTabPageState extends State<DriverChatTabPage> {
       ),
     );
   }
-
-  Widget prefixIcon() {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-      child: Container(
-        height: 45,
-        width: 45,
-        padding: EdgeInsets.all(0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          color: Color.fromARGB(80, 204, 204, 204),
-        ),
-        child: Icon(
-          Icons.person_2,
-          size: 30,
-          color: Color.fromARGB(99, 247, 211, 2),
-        ),
-      ),
-    );
-  }
 }
 
-class ChatScreen extends StatelessWidget {
+class ChatScreen extends StatefulWidget {
   final String username;
 
-  const ChatScreen({Key? key, required this.username}) : super(key: key);
+  ChatScreen({Key? key, required this.username}) : super(key: key);
+
+  @override
+  State<ChatScreen> createState() => _ChatScreenState();
+}
+
+class _ChatScreenState extends State<ChatScreen> {
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+  final TextEditingController _messageController = TextEditingController();
+
+  late Stream<QuerySnapshot> _messagesStream;
+
+  @override
+  void initState() {
+    super.initState();
+    _messagesStream =
+        firestore.collection('messages').orderBy('timestamp').snapshots();
+  }
+
+  void _sendMessage(String message) {
+    firestore.collection('messages').add({
+      'text': message,
+      'timestamp': DateTime.now(),
+    });
+    _messageController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -152,6 +171,7 @@ class ChatScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
+        toolbarHeight: 80,
         leading: Padding(
           padding: const EdgeInsets.all(12),
           child: CircleAvatar(
@@ -167,16 +187,6 @@ class ChatScreen extends StatelessWidget {
           // ignore: prefer_const_literals_to_create_immutables
           children: [
             Spacer(),
-            CircleAvatar(
-              radius: 22,
-              backgroundColor: Colors.blueGrey,
-              child: Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 35,
-              ),
-            ),
-            SizedBox(width: 10),
             Text(
               "Arnold mcmillan",
               style: TextStyle(
@@ -184,159 +194,163 @@ class ChatScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-            SizedBox(width: 25),
+            SizedBox(width: 10),
             CircleAvatar(
-              radius: 15,
-              backgroundColor: Color.fromARGB(255, 88, 209, 92),
+              backgroundColor: Colors.blueGrey,
               child: Icon(
-                Icons.call,
-                color: Colors.black,
-                size: 18,
+                Icons.person,
+                color: Colors.white,
+                size: 25,
               ),
             ),
-            SizedBox(width: 5),
+            SizedBox(width: 10),
           ],
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: ListView.builder(
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  final isSentMessage = index % 2 == 0;
-
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      mainAxisAlignment: isSentMessage
-                          ? MainAxisAlignment.end
-                          : MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        if (!isSentMessage)
-                          Padding(
-                            padding: EdgeInsets.only(right: 14),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.blueGrey,
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.white,
-                                size: 25,
-                              ),
-                            ),
-                          ),
-                        Flexible(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: isSentMessage ? 10.0 : 0.0,
-                              right: isSentMessage ? 0.0 : 10.0,
-                            ),
-                            child: Container(
-                              width: 320,
-                              padding: EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: isSentMessage
-                                    ? Color.fromARGB(255, 238, 229, 97)
-                                    : Colors.white,
-                                borderRadius: BorderRadius.circular(12),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.5),
-                                    spreadRadius: 2,
-                                    blurRadius: 5,
-                                    offset: Offset(0, 0.1),
+      body: Column(
+        children: [
+          Expanded(
+            child: StreamBuilder<QuerySnapshot>(
+              stream: _messagesStream,
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data?.docs.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final message = snapshot.data?.docs[index];
+                      return ListTile(
+                        title: Row(
+                          children: [
+                            Flexible(
+                              child: Padding(
+                                padding: EdgeInsets.only(
+                                  left: (snapshot.hasData) ? 10.0 : 0.0,
+                                  right: (snapshot.hasData) ? 0.0 : 10.0,
+                                ),
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    color: (snapshot.hasData)
+                                        ? Colors.white
+                                        : Color.fromARGB(255, 238, 229, 97),
+                                    borderRadius: BorderRadius.circular(8),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black.withOpacity(0.2),
+                                        offset: Offset(0, 2),
+                                        blurRadius: 3,
+                                        spreadRadius: 0,
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                              child: Text(
-                                'Get the messenger. Come in 10 minutes. uhudihuihuhuh',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500,
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    message?['text'],
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                        if (isSentMessage)
-                          Padding(
-                            padding: EdgeInsets.only(left: 14),
-                            child: CircleAvatar(
-                              backgroundColor: Colors.black,
-                              child: Icon(Icons.person_4_rounded,
-                                  color: Colors.white, size: 25),
+                            Padding(
+                              padding: EdgeInsets.only(left: 5),
+                              child: CircleAvatar(
+                                radius: 10,
+                                backgroundColor: Colors.blueGrey,
+                                child: Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                  size: 10,
+                                ),
+                              ),
                             ),
-                          )
-                      ],
-                    ),
+                          ],
+                        ),
+                      );
+                    },
                   );
-                },
-              ),
+                } else {
+                  return Center(child: CircularProgressIndicator());
+                }
+              },
             ),
-            Container(
-              height: 65,
-              width: 320,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: Offset(0, 2),
+          ),
+          Container(
+            height: 55,
+            width: 360,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(15)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 2),
+                ),
+              ],
+            ),
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+            child: Material(
+              color: Colors.transparent,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 8,
+                    child: Material(
+                      color: Colors.transparent,
+                      child: TextField(
+                        controller: _messageController,
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Type a message...',
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        width: 55,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(255, 238, 229, 97),
+                          borderRadius: BorderRadius.horizontal(
+                              right: Radius.circular(15)),
+                        ),
+                        child: IconButton(
+                          onPressed: () {
+                            String message = _messageController.text.trim();
+                            if (message.isNotEmpty) {
+                              _sendMessage(message);
+                            }
+                          },
+                          icon: Icon(Icons.send_rounded,
+                              color: Colors.black, size: 30),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
-              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-              child: Material(
-                color: Colors.transparent,
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 8,
-                      child: Material(
-                        color: Colors.transparent,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Type a message...',
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 8),
-                    Expanded(
-                      flex: 2,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          width: 55,
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 238, 229, 97),
-                            borderRadius: BorderRadius.horizontal(
-                                right: Radius.circular(15)),
-                          ),
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.send_rounded,
-                                color: Colors.black, size: 30),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: 5),
+        ],
       ),
     );
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty<Stream<QuerySnapshot<Object?>>>(
+        '_messagesStream', _messagesStream));
   }
 }

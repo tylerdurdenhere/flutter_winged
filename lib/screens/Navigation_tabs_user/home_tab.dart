@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
-import 'package:flutter_winged/Unused_screens/Offer_ride/offer_ride.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -30,18 +29,11 @@ class _UserHomeTabPageState extends State<UserHomeTabPage> {
             zoomControlsEnabled: false,
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 600, 24, 30),
+            padding: const EdgeInsets.fromLTRB(24, 670, 24, 10),
             child: Stack(
               children: [
-                Container(
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
-                  ),
-                ),
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(22, 5, 22, 5),
+                  padding: const EdgeInsets.fromLTRB(22, 70, 22, 5),
                   child: Row(
                     children: [
                       Expanded(
@@ -59,13 +51,13 @@ class _UserHomeTabPageState extends State<UserHomeTabPage> {
                             style: GoogleFonts.montserrat(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 17.1,
+                              fontSize: 16,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(247, 211, 2, 0.5),
+                            backgroundColor: Color.fromRGBO(247, 211, 2, 0.75),
                             elevation: 0,
-                            foregroundColor: Color.fromRGBO(247, 211, 2, 0.5),
+                            foregroundColor: Color.fromRGBO(247, 211, 2, 0.75),
                           ),
                         ),
                       ),
@@ -76,7 +68,7 @@ class _UserHomeTabPageState extends State<UserHomeTabPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(24, 430, 24, 200),
+            padding: const EdgeInsets.fromLTRB(24, 600, 24, 0),
             child: Stack(
               children: [
                 Container(
@@ -99,13 +91,13 @@ class _UserHomeTabPageState extends State<UserHomeTabPage> {
                             style: GoogleFonts.montserrat(
                               color: Colors.black,
                               fontWeight: FontWeight.w600,
-                              fontSize: 17.1,
+                              fontSize: 16,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(247, 211, 2, 0.5),
+                            backgroundColor: Color.fromRGBO(247, 211, 2, 0.75),
                             elevation: 0,
-                            foregroundColor: Color.fromRGBO(247, 211, 2, 0.5),
+                            foregroundColor: Color.fromRGBO(247, 211, 2, 0.75),
                           ),
                         ),
                       ),

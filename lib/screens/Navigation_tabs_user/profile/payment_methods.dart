@@ -198,7 +198,7 @@ class PaymentMethods extends StatelessWidget {
                           Container(
                             height: 40,
                             decoration: BoxDecoration(
-                              color: Colors.yellow,
+                              color: Color(0xFFF7D302),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: TextButton(

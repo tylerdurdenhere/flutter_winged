@@ -30,7 +30,7 @@ class _UserNotificationTabPageState extends State<UserNotificationTabPage> {
                   "Notifications",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 22,
                     color: Colors.black,
                   ),
                 ),
@@ -56,8 +56,8 @@ class _UserNotificationTabPageState extends State<UserNotificationTabPage> {
         color: isRead ? Colors.transparent : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            offset: Offset(0, 2),
+            color: Colors.black.withOpacity(0.1),
+            offset: Offset(0, 1),
             blurRadius: 3,
             spreadRadius: 0,
           ),
@@ -105,7 +105,7 @@ class _UserNotificationTabPageState extends State<UserNotificationTabPage> {
   }
 
   Widget message(int index) {
-    double textSize = 17.3;
+    double textSize = 16;
     return Container(
       child: RichText(
         maxLines: 2,
@@ -121,8 +121,7 @@ class _UserNotificationTabPageState extends State<UserNotificationTabPage> {
               TextSpan(
                   text: 'Customer Experience 101',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ))
+                      fontWeight: FontWeight.bold, fontSize: textSize))
             ]),
       ),
     );

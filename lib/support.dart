@@ -62,7 +62,7 @@ class SupportPage extends StatelessWidget {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 SizedBox(height: 25),
-                Icon(Icons.call, size: 50, color: Colors.yellow),
+                Icon(Icons.call, size: 50, color: Color(0xFFF7D302)),
                 SizedBox(height: 5),
                 Text(
                   'Call us',
@@ -92,7 +92,7 @@ class SupportPage extends StatelessWidget {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 SizedBox(height: 25),
-                Icon(Icons.mail, size: 50, color: Colors.yellow),
+                Icon(Icons.mail, size: 50, color: Color(0xFFF7D302)),
                 SizedBox(height: 5),
                 Text(
                   'E-mail',
@@ -122,7 +122,7 @@ class SupportPage extends StatelessWidget {
               // ignore: prefer_const_literals_to_create_immutables
               children: [
                 SizedBox(height: 25),
-                Icon(Icons.facebook, size: 50, color: Colors.yellow),
+                Icon(Icons.facebook, size: 50, color: Color(0xFFF7D302)),
                 SizedBox(height: 5),
                 Text(
                   'Facebook',

@@ -1,13 +1,12 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, prefer_final_fields
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/chats_tab.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/home_tab.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/mytrips_tab.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_user/notification_tab.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/profile_tab.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/login_page.dart';
+
+import '../Navigation_tabs_user/profile/profile_tab.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   onItemClicked(int index) {
     setState(() {
@@ -28,7 +27,8 @@ class _HomePageState extends State<HomePage>
 
   @override
   void initState() {
-    tabController = TabController(length: 5, vsync: this);
+    tabController =
+        TabController(length: 5, vsync: this, initialIndex: selectedIndex);
     super.initState();
   }
 
@@ -39,9 +39,9 @@ class _HomePageState extends State<HomePage>
         physics: NeverScrollableScrollPhysics(),
         controller: tabController,
         children: const [
-          UserHomeTabPage(),
           UserMyTripsTabPage(),
           UserChatTabPage(),
+          UserHomeTabPage(),
           UserNotificationTabPage(),
           UserProfileTabPage(),
         ],
@@ -49,16 +49,16 @@ class _HomePageState extends State<HomePage>
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.route_outlined),
             label: "My trips",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
             label: "Chats",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),

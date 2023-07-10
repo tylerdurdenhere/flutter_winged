@@ -3,7 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_winged/Unused_screens/Driver_screens/driver_register.dart';
-import 'package:flutter_winged/Unused_screens/Driver_screens/driver_verify_page.dart';
+import 'package:flutter_winged/screens/authentication/Driver_screens/driver_register.dart';
+import 'package:flutter_winged/screens/authentication/Driver_screens/driver_verify_page.dart';
 import 'package:flutter_winged/screens/authentication/User_screens/register_page.dart';
 import 'package:flutter_winged/screens/authentication/User_screens/verify_page.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -194,7 +195,8 @@ class _DriverLoginState extends State<DriverLogin> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DriverRegister()));
+                                    builder: (context) =>
+                                        RegisterPageDriver()));
                           },
                           child: Text(
                             'Register',

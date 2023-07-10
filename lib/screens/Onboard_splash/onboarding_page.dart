@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, sized_box_for_whitespace, library_private_types_in_public_api, unused_import
 
-import 'dart:ui';
-
 import 'package:flutter_winged/screens/Onboard_splash/splash_screen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
@@ -202,7 +200,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0, 130, 0, 0),
+                                                  0, 100, 0, 0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -241,10 +239,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0, 0.95),
+                              alignment: AlignmentDirectional(0, 0.9),
                               child: Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
+                                    EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                                 child:
                                     smooth_page_indicator.SmoothPageIndicator(
                                   controller: pageViewController ??=
@@ -277,9 +275,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.8, -0.97),
+                      alignment: AlignmentDirectional(0.9, 0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                        padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 700),
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.push(
@@ -289,11 +287,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                         const MySplashScreen()));
                           },
                           child: Text(
-                            'Skip',
+                            'skip',
                             style: GoogleFonts.montserrat(
                               fontSize: 16,
                               color: Colors.black,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                           style: ElevatedButton.styleFrom(

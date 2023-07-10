@@ -1,7 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api, avoid_returning_null_for_void, prefer_const_constructors, avoid_unnecessary_containers
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 class DriverNotificationTabPage extends StatefulWidget {
@@ -33,7 +31,7 @@ class _DriverNotificationTabPageState extends State<DriverNotificationTabPage> {
                   "Notifications",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontSize: 22,
                     color: Colors.black,
                   ),
                 ),
@@ -59,8 +57,8 @@ class _DriverNotificationTabPageState extends State<DriverNotificationTabPage> {
         color: isRead ? Colors.transparent : Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            offset: Offset(0, 2),
+            color: Colors.black.withOpacity(0.1),
+            offset: Offset(0, 1),
             blurRadius: 3,
             spreadRadius: 0,
           ),
@@ -108,7 +106,7 @@ class _DriverNotificationTabPageState extends State<DriverNotificationTabPage> {
   }
 
   Widget message(int index) {
-    double textSize = 17.3;
+    double textSize = 16;
     return Container(
       child: RichText(
         maxLines: 2,
@@ -124,8 +122,7 @@ class _DriverNotificationTabPageState extends State<DriverNotificationTabPage> {
               TextSpan(
                   text: 'Customer Experience 101',
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ))
+                      fontWeight: FontWeight.w600, fontSize: textSize))
             ]),
       ),
     );

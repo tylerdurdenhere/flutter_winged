@@ -5,7 +5,7 @@ import 'package:flutter_winged/screens/Navigation_tabs_driver/chats_tab_driver.d
 import 'package:flutter_winged/screens/Navigation_tabs_driver/home_tab_driver.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_driver/mytrips_tab_driver.dart';
 import 'package:flutter_winged/screens/Navigation_tabs_driver/notification_tab_driver.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_driver/profile_tab_driver.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_driver/profile/profile_tab_driver.dart';
 
 class HomePageDriver extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class HomePageDriver extends StatefulWidget {
 class _HomePageDriverState extends State<HomePageDriver>
     with SingleTickerProviderStateMixin {
   TabController? tabController;
-  int selectedIndex = 0;
+  int selectedIndex = 2;
 
   onItemClicked(int index) {
     setState(() {
@@ -26,7 +26,8 @@ class _HomePageDriverState extends State<HomePageDriver>
 
   @override
   void initState() {
-    tabController = TabController(length: 5, vsync: this);
+    tabController =
+        TabController(length: 5, vsync: this, initialIndex: selectedIndex);
     super.initState();
   }
 
@@ -70,9 +71,9 @@ class _HomePageDriverState extends State<HomePageDriver>
         physics: NeverScrollableScrollPhysics(),
         controller: tabController,
         children: const [
-          DriverHomeTabPage(),
           DriverMyTripsTabPage(),
           DriverChatTabPage(),
+          DriverHomeTabPage(),
           DriverNotificationTabPage(),
           DriverProfileTabPage(),
         ],
@@ -80,16 +81,16 @@ class _HomePageDriverState extends State<HomePageDriver>
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.route_outlined),
             label: "My trips",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat),
             label: "Chats",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications),

@@ -1,12 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, avoid_unnecessary_containers, use_key_in_widget_constructors, camel_case_types, sized_box_for_whitespace, sort_child_properties_last
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/Unused_screens/Driver_screens/driver_login.dart';
-import 'package:flutter_winged/Unused_screens/Driver_screens/driver_register.dart';
-import 'package:flutter_winged/screens/Main_screens/main_page.dart';
 import 'package:flutter_winged/screens/authentication/Driver_screens/driver_register.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/login_page.dart';
 
 class UserProfileTabPage extends StatefulWidget {
   const UserProfileTabPage({Key? key}) : super(key: key);
@@ -60,7 +55,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
               Container(
                 height: 122,
                 width: 170,
-                margin: EdgeInsets.only(left: 10, right: 5, top: 0, bottom: 5),
+                margin: EdgeInsets.only(left: 10, right: 5, top: 0, bottom: 15),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -122,152 +117,162 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                     InkWell(
                       onTap: () {
                         showModalBottomSheet(
+                          isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           context: context,
                           builder: (BuildContext context) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(0, 2),
-                                    blurRadius: 3,
-                                    spreadRadius: 0,
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      offset: Offset(0, 2),
+                                      blurRadius: 3,
+                                      spreadRadius: 0,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12),
                                   ),
-                                ],
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
                                 ),
-                              ),
-                              width: double.infinity,
-                              height: 380,
-                              padding: EdgeInsets.all(16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    'Edit personal details',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(height: 16.0),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    height: 224,
-                                    width: 396,
-                                    padding: EdgeInsets.only(
-                                        top: 1, left: 4, right: 4, bottom: 10),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(height: 4),
-                                        SizedBox(
-                                          height: 48,
-                                          width: 332,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: 'RR Martin',
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                            ),
-                                            textAlignVertical:
-                                                TextAlignVertical.bottom,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            maxLines: 1,
-                                            keyboardType: TextInputType.text,
-                                          ),
-                                        ),
-                                        SizedBox(height: 4),
-                                        SizedBox(
-                                          height: 48,
-                                          width: 332,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: '32 years old',
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                            ),
-                                            textAlignVertical:
-                                                TextAlignVertical.bottom,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            maxLines: 1,
-                                            keyboardType: TextInputType.text,
-                                          ),
-                                        ),
-                                        SizedBox(height: 4),
-                                        SizedBox(
-                                          height: 48,
-                                          width: 332,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: 'Matale, Sri Lanka',
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                            ),
-                                            textAlignVertical:
-                                                TextAlignVertical.bottom,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            maxLines: 1,
-                                            keyboardType: TextInputType.text,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 16.0),
-                                  Container(
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        // code to save changes
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        'Save changes',
-                                        style: TextStyle(
-                                            fontSize: 17.3,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                                width: double.infinity,
+                                height: 380,
+                                padding: EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Text(
+                                      'Edit personal details',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 16.0),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      height: 224,
+                                      width: 396,
+                                      padding: EdgeInsets.only(
+                                          top: 1,
+                                          left: 4,
+                                          right: 4,
+                                          bottom: 10),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SizedBox(height: 4),
+                                          SizedBox(
+                                            height: 48,
+                                            width: 332,
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: 'RR Martin',
+                                                filled: true,
+                                                fillColor: Colors.grey.shade200,
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                              ),
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade700,
+                                              ),
+                                              maxLines: 1,
+                                              keyboardType: TextInputType.text,
+                                            ),
+                                          ),
+                                          SizedBox(height: 4),
+                                          SizedBox(
+                                            height: 48,
+                                            width: 332,
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: '32 years old',
+                                                filled: true,
+                                                fillColor: Colors.grey.shade200,
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                              ),
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade700,
+                                              ),
+                                              maxLines: 1,
+                                              keyboardType: TextInputType.text,
+                                            ),
+                                          ),
+                                          SizedBox(height: 4),
+                                          SizedBox(
+                                            height: 48,
+                                            width: 332,
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: 'Matale, Sri Lanka',
+                                                filled: true,
+                                                fillColor: Colors.grey.shade200,
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                              ),
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade700,
+                                              ),
+                                              maxLines: 1,
+                                              keyboardType: TextInputType.text,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 16.0),
+                                    Container(
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFF7D302),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          // code to save changes
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Save changes',
+                                          style: TextStyle(
+                                              fontSize: 17.3,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -276,7 +281,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                       child: Container(
                         height: 24,
                         decoration: BoxDecoration(
-                          color: Colors.yellow,
+                          color: Color(0xFFF7D302),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(12),
                             bottomRight: Radius.circular(12),
@@ -300,7 +305,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
               Container(
                 height: 122,
                 width: 170,
-                margin: EdgeInsets.only(left: 5, right: 10, top: 0, bottom: 5),
+                margin: EdgeInsets.only(left: 5, right: 10, top: 0, bottom: 15),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -317,7 +322,8 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 10, top: 10, right: 0),
+                      margin: EdgeInsets.only(
+                          left: 10, top: 10, right: 0, bottom: 2),
                       child: Text(
                         "Contact",
                         style: TextStyle(
@@ -355,128 +361,139 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                     InkWell(
                       onTap: () {
                         showModalBottomSheet(
+                          isScrollControlled: true,
                           backgroundColor: Colors.transparent,
                           context: context,
                           builder: (BuildContext context) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade200,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black.withOpacity(0.2),
-                                    offset: Offset(0, 2),
-                                    blurRadius: 3,
-                                    spreadRadius: 0,
+                            return Padding(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey.shade200,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.black.withOpacity(0.2),
+                                      offset: Offset(0, 2),
+                                      blurRadius: 3,
+                                      spreadRadius: 0,
+                                    ),
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(12),
+                                    topRight: Radius.circular(12),
                                   ),
-                                ],
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
                                 ),
-                              ),
-                              width: double.infinity,
-                              height: 300,
-                              padding: EdgeInsets.all(16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                children: [
-                                  Text(
-                                    'Edit contact details',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
-                                    ),
-                                  ),
-                                  SizedBox(height: 16.0),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    height: 160,
-                                    width: 396,
-                                    padding: EdgeInsets.only(
-                                        top: 1, left: 4, right: 4, bottom: 10),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        SizedBox(height: 4),
-                                        SizedBox(
-                                          height: 48,
-                                          width: 332,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: '0771234567',
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                            ),
-                                            textAlignVertical:
-                                                TextAlignVertical.bottom,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            maxLines: 1,
-                                            keyboardType: TextInputType.number,
-                                          ),
-                                        ),
-                                        SizedBox(height: 4),
-                                        SizedBox(
-                                          height: 48,
-                                          width: 332,
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: 'robmartin@gmail.com',
-                                              filled: true,
-                                              fillColor: Colors.grey.shade200,
-                                              border: OutlineInputBorder(
-                                                borderSide: BorderSide.none,
-                                                borderRadius:
-                                                    BorderRadius.circular(12),
-                                              ),
-                                            ),
-                                            textAlignVertical:
-                                                TextAlignVertical.bottom,
-                                            textAlign: TextAlign.left,
-                                            style: TextStyle(
-                                              color: Colors.grey.shade700,
-                                            ),
-                                            maxLines: 1,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(height: 16.0),
-                                  Container(
-                                    height: 40,
-                                    decoration: BoxDecoration(
-                                      color: Colors.yellow,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: TextButton(
-                                      onPressed: () {
-                                        // code to save changes
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        'Save changes',
-                                        style: TextStyle(
-                                            fontSize: 17.3,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
+                                width: double.infinity,
+                                height: 300,
+                                padding: EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  children: [
+                                    Text(
+                                      'Edit contact details',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
                                       ),
                                     ),
-                                  ),
-                                ],
+                                    SizedBox(height: 16.0),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      height: 160,
+                                      width: 396,
+                                      padding: EdgeInsets.only(
+                                          top: 1,
+                                          left: 4,
+                                          right: 4,
+                                          bottom: 10),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          SizedBox(height: 4),
+                                          SizedBox(
+                                            height: 48,
+                                            width: 332,
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: '0771234567',
+                                                filled: true,
+                                                fillColor: Colors.grey.shade200,
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                              ),
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade700,
+                                              ),
+                                              maxLines: 1,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                            ),
+                                          ),
+                                          SizedBox(height: 4),
+                                          SizedBox(
+                                            height: 48,
+                                            width: 332,
+                                            child: TextField(
+                                              decoration: InputDecoration(
+                                                hintText: 'robmartin@gmail.com',
+                                                filled: true,
+                                                fillColor: Colors.grey.shade200,
+                                                border: OutlineInputBorder(
+                                                  borderSide: BorderSide.none,
+                                                  borderRadius:
+                                                      BorderRadius.circular(12),
+                                                ),
+                                              ),
+                                              textAlignVertical:
+                                                  TextAlignVertical.bottom,
+                                              textAlign: TextAlign.left,
+                                              style: TextStyle(
+                                                color: Colors.grey.shade700,
+                                              ),
+                                              maxLines: 1,
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 16.0),
+                                    Container(
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFF7D302),
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          // code to save changes
+                                          Navigator.pop(context);
+                                        },
+                                        child: Text(
+                                          'Save changes',
+                                          style: TextStyle(
+                                              fontSize: 17.3,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -485,7 +502,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                       child: Container(
                         height: 24,
                         decoration: BoxDecoration(
-                          color: Colors.yellow,
+                          color: Color(0xFFF7D302),
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(12),
                             bottomRight: Radius.circular(12),
@@ -521,7 +538,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
               children: [
                 Expanded(
                   child: Container(
-                    height: 40,
+                    height: 45,
                     margin:
                         EdgeInsets.only(top: 0, right: 10, left: 10, bottom: 0),
                     child: ElevatedButton(
@@ -533,11 +550,11 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
                                     const RegisterPageDriver()));
                       },
                       child: Text(
-                        'Switch Driver Mode',
+                        'Switch to Driver Mode',
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 20),
+                            fontSize: 16),
                       ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFFF7D302),
@@ -554,7 +571,6 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
   }
 
   Widget listViewItem(int index) {
-    bool isLastItem = index == 6;
     return TextButton(
         onPressed: () {
           List<String> routes = [
@@ -569,11 +585,11 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
         child: Container(
           margin: EdgeInsets.only(top: 0, right: 10, left: 10, bottom: 0),
           decoration: BoxDecoration(
-            color: isLastItem ? Colors.yellow : Colors.white,
+            color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                offset: Offset(0, 2),
+                color: Colors.black.withOpacity(0.1),
+                offset: Offset(0, 1),
                 blurRadius: 3,
                 spreadRadius: 0,
               ),
@@ -600,7 +616,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
   }
 
   Widget containerTitle(int index) {
-    double textSize = 17.3;
+    double textSize = 16;
     List<String> containerTitles = [
       'My addresses',
       'My wallet',
@@ -617,7 +633,7 @@ class _UserProfileTabPageState extends State<UserProfileTabPage> {
           style: TextStyle(
             fontSize: textSize,
             color: Colors.black,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w600,
           ),
         ),
       ),
@@ -685,6 +701,147 @@ class AppSettings extends StatelessWidget {
               children: [
                 SizedBox(width: 16),
                 Text(
+                  'Availability',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                Spacer(),
+                Text(
+                  'off',
+                  style: TextStyle(fontSize: 12),
+                ),
+                Switch(
+                  value: true,
+                  onChanged: (bool value) {
+                    //switch function
+                  },
+                  activeColor: Colors.green,
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveThumbColor: Colors.black,
+                  inactiveTrackColor: Colors.grey.shade300,
+                ),
+                Text(
+                  'on',
+                  style: TextStyle(fontSize: 12),
+                ),
+                SizedBox(width: 16),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          Container(
+            height: 70,
+            width: 380,
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 16),
+                Text(
+                  'Availability',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                Spacer(),
+                Text(
+                  'off',
+                  style: TextStyle(fontSize: 12),
+                ),
+                Switch(
+                  value: false,
+                  onChanged: (bool value) {
+                    //switch function
+                  },
+                  activeColor: Colors.green,
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveThumbColor: Colors.black,
+                  inactiveTrackColor: Colors.grey.shade300,
+                ),
+                Text(
+                  'on',
+                  style: TextStyle(fontSize: 12),
+                ),
+                SizedBox(width: 16),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          Container(
+            height: 70,
+            width: 380,
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 16),
+                Text(
+                  'Silent mode',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                Spacer(),
+                Text(
+                  'off',
+                  style: TextStyle(fontSize: 12),
+                ),
+                Switch(
+                  value: true,
+                  onChanged: (bool value) {
+                    //switch function
+                  },
+                  activeColor: Color(0xFFF7D302),
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveThumbColor: Colors.black,
+                  inactiveTrackColor: Colors.grey.shade300,
+                ),
+                Text(
+                  'on',
+                  style: TextStyle(fontSize: 12),
+                ),
+                SizedBox(width: 16),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          Container(
+            height: 70,
+            width: 380,
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 16),
+                Text(
                   'Silent mode',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
@@ -698,10 +855,10 @@ class AppSettings extends StatelessWidget {
                   onChanged: (bool value) {
                     //switch function
                   },
-                  activeColor: Colors.yellow,
-                  activeTrackColor: Colors.black54,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.black54,
+                  activeColor: Color(0xFFF7D302),
+                  activeTrackColor: Colors.grey.shade300,
+                  inactiveThumbColor: Colors.black,
+                  inactiveTrackColor: Colors.grey.shade300,
                 ),
                 Text(
                   'on',
@@ -732,205 +889,74 @@ class AppSettings extends StatelessWidget {
               children: [
                 SizedBox(width: 16),
                 Text(
-                  'Silent mode',
+                  'Verification status',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
                 Spacer(),
-                Text(
-                  'off',
-                  style: TextStyle(fontSize: 12),
-                ),
-                Switch(
-                  value: true,
-                  onChanged: (bool value) {
-                    //switch function
-                  },
-                  activeColor: Colors.yellow,
-                  activeTrackColor: Colors.black54,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.black54,
-                ),
-                Text(
-                  'on',
-                  style: TextStyle(fontSize: 12),
-                ),
-                SizedBox(width: 16),
-              ],
-            ),
-          ),
-          SizedBox(height: 12),
-          Container(
-            height: 70,
-            width: 380,
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
-                  blurRadius: 3,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                SizedBox(width: 16),
-                Text(
-                  'Silent mode',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                Spacer(),
-                Text(
-                  'off',
-                  style: TextStyle(fontSize: 12),
-                ),
-                Switch(
-                  value: true,
-                  onChanged: (bool value) {
-                    //switch function
-                  },
-                  activeColor: Colors.yellow,
-                  activeTrackColor: Colors.black54,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.black54,
-                ),
-                Text(
-                  'on',
-                  style: TextStyle(fontSize: 12),
-                ),
-                SizedBox(width: 16),
-              ],
-            ),
-          ),
-          SizedBox(height: 12),
-          Container(
-            height: 70,
-            width: 380,
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
-                  blurRadius: 3,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                SizedBox(width: 16),
-                Text(
-                  'Silent mode',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                Spacer(),
-                Text(
-                  'off',
-                  style: TextStyle(fontSize: 12),
-                ),
-                Switch(
-                  value: true,
-                  onChanged: (bool value) {
-                    //switch function
-                  },
-                  activeColor: Colors.yellow,
-                  activeTrackColor: Colors.black54,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.black54,
-                ),
-                Text(
-                  'on',
-                  style: TextStyle(fontSize: 12),
-                ),
-                SizedBox(width: 16),
-              ],
-            ),
-          ),
-          SizedBox(height: 12),
-          Container(
-            height: 70,
-            width: 380,
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(12),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
-                  offset: Offset(0, 2),
-                  blurRadius: 3,
-                  spreadRadius: 0,
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                SizedBox(width: 16),
-                Text(
-                  'Silent mode',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                ),
-                Spacer(),
-                Text(
-                  'off',
-                  style: TextStyle(fontSize: 12),
-                ),
-                Switch(
-                  value: true,
-                  onChanged: (bool value) {
-                    //switch function
-                  },
-                  activeColor: Colors.yellow,
-                  activeTrackColor: Colors.black54,
-                  inactiveThumbColor: Colors.grey,
-                  inactiveTrackColor: Colors.black54,
-                ),
-                Text(
-                  'on',
-                  style: TextStyle(fontSize: 12),
-                ),
-                SizedBox(width: 16),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(8, 8, 8, 50),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 40,
-                    margin:
-                        EdgeInsets.only(top: 0, right: 10, left: 10, bottom: 0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
-                      },
-                      child: Text(
-                        'Log Out',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFF7D302),
-                      ),
+                Container(
+                  width: 100,
+                  height: 30,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    'Not Verified',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
+                SizedBox(width: 16),
+              ],
+            ),
+          ),
+          SizedBox(height: 12),
+          Container(
+            height: 70,
+            width: 380,
+            margin: EdgeInsets.symmetric(horizontal: 16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  offset: Offset(0, 2),
+                  blurRadius: 3,
+                  spreadRadius: 0,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                SizedBox(width: 16),
+                Text(
+                  'Verification status',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                Spacer(),
+                Container(
+                  width: 100,
+                  height: 30,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Text(
+                    'Verified',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ),
+                SizedBox(width: 16),
               ],
             ),
           ),

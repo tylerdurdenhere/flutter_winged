@@ -1,9 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api, prefer_const_constructors, must_be_immutable, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride2.dart';
 import 'package:flutter_winged/screens/Start_a_trip/start_trip1.dart';
-import 'package:flutter_winged/screens/Start_a_trip/start_trip2.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_place/google_place.dart';
 

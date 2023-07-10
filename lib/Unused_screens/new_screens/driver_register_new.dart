@@ -583,7 +583,7 @@ class _addVehicleState extends State<addVehicle> {
                               onChanged: (bool value) {
                                 //switch function
                               },
-                              activeColor: Colors.yellow,
+                              activeColor: Color(0xFFF7D302),
                               activeTrackColor: Colors.black54,
                               inactiveThumbColor: Colors.black,
                               inactiveTrackColor: Colors.black54,

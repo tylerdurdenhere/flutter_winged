@@ -205,13 +205,14 @@ class MyWallet extends StatelessWidget {
                         width: 179.5,
                         height: 48,
                         decoration: BoxDecoration(
-                          color:
-                              _isTopUpSelected ? Colors.yellow : Colors.white,
+                          color: _isTopUpSelected
+                              ? Color(0xFFF7D302)
+                              : Colors.white,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(12),
                           ),
                           border: Border.all(
-                            color: Colors.yellow,
+                            color: Color(0xFFF7D302),
                             width: 1,
                           ),
                         ),
@@ -238,13 +239,14 @@ class MyWallet extends StatelessWidget {
                         width: 179,
                         height: 48,
                         decoration: BoxDecoration(
-                          color:
-                              !_isTopUpSelected ? Colors.yellow : Colors.white,
+                          color: !_isTopUpSelected
+                              ? Color(0xFFF7D302)
+                              : Colors.white,
                           borderRadius: BorderRadius.only(
                             topRight: Radius.circular(12),
                           ),
                           border: Border.all(
-                            color: Colors.yellow,
+                            color: Color(0xFFF7D302),
                             width: 1,
                           ),
                         ),
@@ -736,7 +738,7 @@ class MyWallet extends StatelessWidget {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(
-                                    color: Colors.yellow,
+                                    color: Color(0xFFF7D302),
                                     width: 2,
                                   ),
                                 ),
@@ -757,7 +759,7 @@ class MyWallet extends StatelessWidget {
                                 height: 35,
                                 width: 170,
                                 decoration: BoxDecoration(
-                                  color: Colors.yellow,
+                                  color: Color(0xFFF7D302),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 child: TextButton(

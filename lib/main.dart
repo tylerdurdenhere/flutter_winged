@@ -1,35 +1,20 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/Unused_screens/new_screens/driver_register_new.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/about.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/my_addresses.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/my_vehicles.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/my_wallet.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/payment_methods.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/support.dart';
-import 'package:flutter_winged/Unused_screens/Driver_screens/driver_login.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride2.dart';
-import 'package:flutter_winged/Unused_screens/find_ride_screens/find_ride3.dart';
-import 'package:flutter_winged/screens/Main_screens/home_page_driver.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_driver/home_tab_driver.dart';
-import 'package:flutter_winged/screens/Navigation_tabs_user/home_tab.dart';
-import 'package:flutter_winged/screens/Start_a_trip/start_trip1.dart';
-import 'package:flutter_winged/screens/Start_a_trip/start_trip2.dart';
-import 'package:flutter_winged/screens/Start_a_trip/start_trip3.dart';
-import 'package:flutter_winged/screens/permission_screens/addcard_page.dart';
 import 'package:flutter_winged/screens/Main_screens/home_page.dart';
-import 'package:flutter_winged/screens/permission_screens/location_page.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/login_page.dart';
+import 'package:flutter_winged/screens/Main_screens/home_page_driver.dart';
 import 'package:flutter_winged/screens/Main_screens/main_page.dart';
-import 'package:flutter_winged/screens/Onboard_splash/onboarding_page.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/register_page.dart';
-import 'package:flutter_winged/screens/Onboard_splash/splash_screen.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/verify_page.dart';
-import 'package:get_storage/get_storage.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_driver/profile/my_addresses_driver.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_driver/profile/my_vehicles_driver.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_driver/profile/payment_methods_driver.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_user/profile/my_addresses.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_user/profile/my_vehicles.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_user/profile/my_wallet.dart';
+import 'package:flutter_winged/screens/Navigation_tabs_user/profile/payment_methods.dart';
+import 'package:flutter_winged/support.dart';
+
+import 'about.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,8 +39,13 @@ class MyApp extends StatelessWidget {
         '/myaddresses': (context) => MyAddresses(),
         '/mywallet': (context) => MyWallet(),
         '/paymentmethods': (context) => PaymentMethods(),
+        //
         '/support': (context) => SupportPage(),
         '/about': (context) => AboutPage(),
+        //
+        '/myVehiclesDriver': (context) => MyVehiclesDriver(),
+        '/myaddressesDriver': (context) => MyAddressesDriver(),
+        '/paymentmethodsDriver': (context) => PaymentMethodsDriver(),
       },
     );
   }

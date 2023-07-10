@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_winged/Unused_screens/new_screens/driver_register_new.dart';
 import 'package:flutter_winged/models/bank_model.dart';
 import 'package:flutter_winged/models/card_model.dart';
 import 'package:flutter_winged/models/driver_model.dart';
@@ -20,6 +17,7 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
+// Storing Data in firestore
   createUser(UserModel newuser) async {
     await _db
         .collection("User")

@@ -2,9 +2,7 @@
 
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/screens/Find_ride/find_ride.dart';
 import 'package:flutter_winged/Unused_screens/Offer_ride/offer_ride.dart';
 import 'package:flutter_winged/screens/Start_a_trip/start_trip3.dart';
 import 'package:flutter_winged/models/checkbox_state.dart';

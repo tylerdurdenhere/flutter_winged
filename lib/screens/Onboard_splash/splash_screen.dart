@@ -3,8 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_winged/screens/Main_screens/home_page.dart';
-import 'package:flutter_winged/screens/authentication/User_screens/login_page.dart';
+import 'package:flutter_winged/screens/authentication/choose_mode.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   startTimer() {
     Timer(const Duration(seconds: 3), () {
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+          context, MaterialPageRoute(builder: (context) => ChooseTypePage()));
     });
   }
 

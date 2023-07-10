@@ -230,6 +230,32 @@ class _RegisterPageState extends State<RegisterPage> {
                               userRef.child(user!.uid).set(userMap);
 
                               currentFirebaseUser = user;
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: Text(
+                                      "Too Many Requests",
+                                      style: GoogleFonts.montserrat(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    content: Text(
+                                      "We have detected unusual activity from this device. Please try again later.",
+                                      style:
+                                          GoogleFonts.montserrat(fontSize: 14),
+                                    ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        child: Text("OK"),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
                           },
                           child: Text(

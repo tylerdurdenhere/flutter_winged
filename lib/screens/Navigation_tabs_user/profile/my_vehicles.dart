@@ -272,7 +272,7 @@ class MyVehicles extends StatelessWidget {
                                         onChanged: (bool value) {
                                           //switch function
                                         },
-                                        activeColor: Colors.yellow,
+                                        activeColor: Color(0xFFF7D302),
                                         activeTrackColor: Colors.black54,
                                         inactiveThumbColor: Colors.black,
                                         inactiveTrackColor: Colors.black54,
@@ -375,7 +375,7 @@ class MyVehicles extends StatelessWidget {
                           Container(
                             height: 40,
                             decoration: BoxDecoration(
-                              color: Colors.yellow,
+                              color: Color(0xFFF7D302),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: TextButton(
@@ -705,7 +705,7 @@ class MyVehicles extends StatelessWidget {
                                             onChanged: (bool value) {
                                               //switch function
                                             },
-                                            activeColor: Colors.yellow,
+                                            activeColor: Color(0xFFF7D302),
                                             activeTrackColor: Colors.black54,
                                             inactiveThumbColor: Colors.black,
                                             inactiveTrackColor: Colors.black54,
@@ -816,7 +816,7 @@ class MyVehicles extends StatelessWidget {
                               Container(
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  color: Colors.yellow,
+                                  color: Color(0xFFF7D302),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: TextButton(
@@ -849,7 +849,7 @@ class MyVehicles extends StatelessWidget {
                           height: 30,
                           margin: EdgeInsets.fromLTRB(16, 12, 0, 12),
                           decoration: BoxDecoration(
-                            color: Colors.yellow,
+                            color: Color(0xFFF7D302),
                             borderRadius: BorderRadius.horizontal(
                                 left: Radius.circular(6)),
                           ),
@@ -1169,7 +1169,7 @@ class MyVehicles extends StatelessWidget {
                                             onChanged: (bool value) {
                                               //switch function
                                             },
-                                            activeColor: Colors.yellow,
+                                            activeColor: Color(0xFFF7D302),
                                             activeTrackColor: Colors.black54,
                                             inactiveThumbColor: Colors.black,
                                             inactiveTrackColor: Colors.black54,
@@ -1280,7 +1280,7 @@ class MyVehicles extends StatelessWidget {
                               Container(
                                 height: 40,
                                 decoration: BoxDecoration(
-                                  color: Colors.yellow,
+                                  color: Color(0xFFF7D302),
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                                 child: TextButton(
@@ -1313,7 +1313,7 @@ class MyVehicles extends StatelessWidget {
                           height: 30,
                           margin: EdgeInsets.fromLTRB(16, 12, 0, 12),
                           decoration: BoxDecoration(
-                            color: Colors.yellow,
+                            color: Color(0xFFF7D302),
                             borderRadius: BorderRadius.horizontal(
                                 left: Radius.circular(6)),
                           ),
